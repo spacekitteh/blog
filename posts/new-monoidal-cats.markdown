@@ -14,6 +14,7 @@ Having all these classes in base would allow a single set of abstractions to opt
 Bifunctors
 ----------
 The first thing needed is bifunctors:
+
 ```haskell
 -- | Minimal definition either 'bimap' or 'first' and 'second'
 
@@ -53,21 +54,18 @@ class Bifunctor p where
   -- @'bimap' f g ≡ 'first' f '.' 'second' g@
   bimap :: (a -> b) -> (c -> d) -> p a c -> p b d
   bimap f g = first f . second g
-  {-# INLINE bimap #-}
 
   -- | Map covariantly over the first argument.
   --
   -- @'first' f ≡ 'bimap' f 'id'@
   first :: (a -> b) -> p a c -> p b c
   first f = bimap f id
-  {-# INLINE first #-}
 
   -- | Map covariantly over the second argument.
   --
   -- @'second' ≡ 'bimap' 'id'@
   second :: (b -> c) -> p a b -> p a c
   second = bimap id
-  {-# INLINE second #-}
   ```
   
   This is a straight copy/paste from Edward's bifunctors package. Bifunctors are needed because the monoidal operation is a endobifunctor!
