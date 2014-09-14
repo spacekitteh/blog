@@ -68,7 +68,7 @@ class Bifunctor p where
   second = bimap id
 ```
   
-  This is a straight copy/paste from Edward's bifunctors package. Bifunctors are needed because the monoidal operation is a endobifunctor!
+  This is a straight copy/paste from Edward's bifunctors package. An alternate possibility is the PFunctor+QFunctor route from the categories package. Bifunctors are needed because the monoidal operation is a endobifunctor!
   
 Binoidal categories
 -------------------
