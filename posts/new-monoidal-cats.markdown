@@ -66,7 +66,7 @@ class Bifunctor p where
   -- 'second' ≡ 'bimap' 'id'
   second :: (b -> c) -> p a b -> p a c
   second = bimap id
-  ```
+```
   
   This is a straight copy/paste from Edward's bifunctors package. Bifunctors are needed because the monoidal operation is a endobifunctor!
   
