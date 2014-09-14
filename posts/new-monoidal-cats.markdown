@@ -16,9 +16,9 @@ Bifunctors
 The first thing needed is bifunctors:
 
 ```haskell
--- | Minimal definition either 'bimap' or 'first' and 'second'
+-- Minimal definition either 'bimap' or 'first' and 'second'
 
--- | Formally, the class 'Bifunctor' represents a bifunctor
+-- Formally, the class 'Bifunctor' represents a bifunctor
 -- from @Hask@ -> @Hask@.
 --
 -- Intuitively it is a bifunctor where both the first and second arguments are covariant.
@@ -49,19 +49,19 @@ The first thing needed is bifunctors:
 -- 'second' (f '.' g) ≡ 'second' f '.' 'second' g
 -- @
 class Bifunctor p where
-  -- | Map over both arguments at the same time.
+  --  Map over both arguments at the same time.
   --
   -- @'bimap' f g ≡ 'first' f '.' 'second' g@
   bimap :: (a -> b) -> (c -> d) -> p a c -> p b d
   bimap f g = first f . second g
 
-  -- | Map covariantly over the first argument.
+  --  Map covariantly over the first argument.
   --
   -- @'first' f ≡ 'bimap' f 'id'@
   first :: (a -> b) -> p a c -> p b c
   first f = bimap f id
 
-  -- | Map covariantly over the second argument.
+  --  Map covariantly over the second argument.
   --
   -- @'second' ≡ 'bimap' 'id'@
   second :: (b -> c) -> p a b -> p a c
@@ -72,6 +72,8 @@ class Bifunctor p where
   
 Binoidal categories
 -------------------
+Binoidal categories are used to model categories in which *evaluation order is significant* - they are not commutative in time, i.e., impure functions. If a category is only a binoidal category, we cannot reorder computations at will. :(
+
 ```haskell
 class (Category k, Bifunctor p) => Binoidal k
   type 
