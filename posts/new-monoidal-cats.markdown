@@ -101,7 +101,7 @@ class (Binoidal k p, Associative k p) => PreMonoidal k p where
 
 Monoidal categories
 -------------------
-A monoidal category is just a commutative premonoidal category; as such, no extra function definitions need to be made.
+A monoidal category is just a commutative premonoidal category - that is, a *pure* premonoidal category; as such, no extra function definitions need to be made.
 ```haskell
 class PreMonoidal k p => Monoidal k p
 ```
