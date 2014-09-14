@@ -75,6 +75,37 @@ Binoidal categories
 Binoidal categories are used to model categories in which *evaluation order is significant* - they are not commutative in time, i.e., impure functions. If a category is only a binoidal category, we cannot reorder computations at will. :(
 
 ```haskell
-class (Category k, Bifunctor p) => Binoidal k
-  type 
+class (Category k, Bifunctor p) => Binoidal k p
+  type Op k p :: *
+  
+  inFirst :: a -> Op k p a b
+  inSecond :: b -> Op k p a b
 ```
+
+Premonoidal categories
+----------------------
+First we need an associative operation:
+```haskell
+class (Bifunctor p, Category k) => Associative k p where
+    associateRight :: k (p (p a b) c) (p a (p b c))
+    associateLeft :: k (p a (p b c)) (p (p a b) c)
+```
+Now for premonoidal categories themselves:
+
+```haskell
+class (Binoidal k p, Associative k p) => PreMonoidal k p where
+    type Id k p :: *
+    cancelLeft :: (Op k p) (Id k p) a -> a
+    cancelRight :: (Op k p) a (Id k p) -> a
+```
+
+Monoidal categories
+-------------------
+A monoidal category is just a commutative premonoidal category; as such, no extra function definitions need to be made.
+```haskell
+class PreMonoidal k p => Monoidal k p
+```
+
+todo
+====
+braidings, terminal/initial objects, daggers, loops, init/causality
