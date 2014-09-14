@@ -19,7 +19,7 @@ The first thing needed is bifunctors:
 -- Minimal definition either 'bimap' or 'first' and 'second'
 
 -- Formally, the class 'Bifunctor' represents a bifunctor
--- from @Hask@ -> @Hask@.
+-- from Hask -> Hask.
 --
 -- Intuitively it is a bifunctor where both the first and second arguments are covariant.
 --
@@ -28,42 +28,42 @@ The first thing needed is bifunctors:
 --
 -- If you supply 'bimap', you should ensure that:
 --
--- @'bimap' 'id' 'id' ≡ 'id'@
+-- 'bimap' 'id' 'id' ≡ 'id'
 --
 -- If you supply 'first' and 'second', ensure:
 --
--- @
+-- 
 -- 'first' 'id' ≡ 'id'
 -- 'second' 'id' ≡ 'id'
--- @
+-- 
 --
 -- If you supply both, you should also ensure:
 --
--- @'bimap' f g ≡ 'first' f '.' 'second' g@
+-- 'bimap' f g ≡ 'first' f '.' 'second' g
 --
 -- These ensure by parametricity:
 --
--- @
+-- 
 -- 'bimap'  (f '.' g) (h '.' i) ≡ 'bimap' f h '.' 'bimap' g i
 -- 'first'  (f '.' g) ≡ 'first'  f '.' 'first'  g
 -- 'second' (f '.' g) ≡ 'second' f '.' 'second' g
--- @
+-- 
 class Bifunctor p where
   --  Map over both arguments at the same time.
   --
-  -- @'bimap' f g ≡ 'first' f '.' 'second' g@
+  -- 'bimap' f g ≡ 'first' f '.' 'second' g
   bimap :: (a -> b) -> (c -> d) -> p a c -> p b d
   bimap f g = first f . second g
 
   --  Map covariantly over the first argument.
   --
-  -- @'first' f ≡ 'bimap' f 'id'@
+  -- 'first' f ≡ 'bimap' f 'id'
   first :: (a -> b) -> p a c -> p b c
   first f = bimap f id
 
   --  Map covariantly over the second argument.
   --
-  -- @'second' ≡ 'bimap' 'id'@
+  -- 'second' ≡ 'bimap' 'id'
   second :: (b -> c) -> p a b -> p a c
   second = bimap id
   ```
