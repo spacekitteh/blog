@@ -120,6 +120,10 @@ String diagrams
 ---------------
 String diagrams can be thought of as an abstract form of network diagrams. Circuit diagrams, Simulink diagrams, signal flow diagrams, etc, are all string diagrams. By having one language to interpret them all (monoidal categories), the level of abstraction is raised tremendously!
 
+Converting proc notation to give monoidal categories where possible
+-------------------------------------------------------------------
+In much the same manner that do notation should give Applicatives where possible, proc notation should give monoidal categories where possible.
+
 Template Haskell support for loading string diagrams
 ----------------------------------------------------
 This would be in another library but it would certainly be made so much easier with monoidal category support in base+ghc
