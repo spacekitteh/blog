@@ -114,13 +114,42 @@ class PreMonoidal k p => Monoidal k p
 
 Note: REEEEEAAAALLLY need to give names to the isomorphisms (the associator and the left/right unit isos)
 
-Braided monoidal categories
+Braided categories
 ---------------------------
 Braidings introduce a "swap" function.
 
-Symmetric monoidal categories
+```haskell
+class Associative k p => Braided k p where
+    braid :: k (p a b) (p b a)
+```
+
+Examples:
+
+```haskell
+instance Braided (->) Either where
+    braid (Left a) = Right a
+    braid (Right b) = Left b
+
+instance Braided (->) (,) where
+    braid ~(a,b) = (b,a)
+```
+
+Symmetric categories
 -----------------------------
-When swap . swap = id
+When braid . braid = id
+
+```haskell
+class Braided k p => Symmetric k p
+
+swap :: Symmetric k p => k (p a b) (p b a)
+swap = braid
+```
+
+Examples:
+```haskell
+instance Symmetric (->) Either
+instance Symmetric (->) (,)
+```
 
 String diagrams
 ---------------
