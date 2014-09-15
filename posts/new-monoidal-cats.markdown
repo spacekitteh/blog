@@ -16,68 +16,29 @@ Bifunctors
 The first thing needed is bifunctors:
 
 ```haskell
--- | Minimal definition either 'bimap' or 'first' and 'second'
+class (Category r, Category t) => PFunctor p r t | p r -> t, p t -> r where
+    first :: r a b -> t (p a c) (p b c)
 
--- | Formally, the class 'Bifunctor' represents a bifunctor
--- from @Hask@ -> @Hask@.
---
--- Intuitively it is a bifunctor where both the first and second arguments are covariant.
---
--- You can define a 'Bifunctor' by either defining 'bimap' or by defining both
--- 'first' and 'second'.
---
--- If you supply 'bimap', you should ensure that:
---
--- @'bimap' 'id' 'id' ≡ 'id'@
---
--- If you supply 'first' and 'second', ensure:
---
--- @
--- 'first' 'id' ≡ 'id'
--- 'second' 'id' ≡ 'id'
--- @
---
--- If you supply both, you should also ensure:
---
--- @'bimap' f g ≡ 'first' f '.' 'second' g@
---
--- These ensure by parametricity:
---
--- @
--- 'bimap'  (f '.' g) (h '.' i) ≡ 'bimap' f h '.' 'bimap' g i
--- 'first'  (f '.' g) ≡ 'first'  f '.' 'first'  g
--- 'second' (f '.' g) ≡ 'second' f '.' 'second' g
--- @
-class Bifunctor p where
-  -- | Map over both arguments at the same time.
-  --
-  -- @'bimap' f g ≡ 'first' f '.' 'second' g@
-  bimap :: (a -> b) -> (c -> d) -> p a c -> p b d
-  bimap f g = first f . second g
+class (Category s, Category t) => QFunctor q s t | q s -> t, q t -> s where
+    second :: s a b -> t (q c a) (q c b)
 
-  -- | Map covariantly over the first argument.
-  --
-  -- @'first' f ≡ 'bimap' f 'id'@
-  first :: (a -> b) -> p a c -> p b c
-  first f = bimap f id
+-- | Minimal definition: @bimap@ 
 
-  -- | Map covariantly over the second argument.
-  --
-  -- @'second' ≡ 'bimap' 'id'@
-  second :: (b -> c) -> p a b -> p a c
-  second = bimap id
+-- or both @first@ and @second@
+class (PFunctor p r t, QFunctor p s t) => Bifunctor p r s t | p r -> s t, p s -> r t, p t -> r s where
+    bimap :: r a b -> s c d -> t (p a c) (p b d)
 ```
   
-  This is a straight copy/paste from Edward's bifunctors package. An alternate possibility is the PFunctor+QFunctor route from the categories package. Bifunctors are needed because the monoidal operation is a endobifunctor!
+  This is a straight copy/paste from Edward's categories package. Bifunctors are needed because the monoidal operation is a endobifunctor!
   
 Binoidal categories
 -------------------
 Binoidal categories are used to model categories in which *evaluation order is significant* - they are not commutative in time, i.e., impure functions. If a category is only a binoidal category, we cannot reorder computations at will. :(
 
 ```haskell
-class (Category k, Bifunctor p) => Binoidal k p
-  inFirst :: a -> p a b
-  inSecond :: b -> p a b
+class (Category k, Bifunctor p k k k) => Binoidal k p
+  inFirst :: k a (p a b)
+  inSecond :: k b (p a b)
 ```
 
 TODO: Give example 
@@ -86,7 +47,7 @@ Premonoidal categories
 ----------------------
 First we need an associative operation:
 ```haskell
-class (Bifunctor p, Category k) => Associative k p where
+class (Bifunctor p k k k, Category k) => Associative k p where
     associateRight :: k (p (p a b) c) (p a (p b c))
     associateLeft :: k (p a (p b c)) (p (p a b) c)
 ```
@@ -95,8 +56,8 @@ Now for premonoidal categories themselves:
 ```haskell
 class (Binoidal k p, Associative k p) => PreMonoidal k p where
     type Id k p :: *
-    cancelLeft :: (Op k p) (Id k p) a -> a
-    cancelRight :: (Op k p) a (Id k p) -> a
+    cancelLeft :: k (p (Id k p) a) a
+    cancelRight ::k (p a (Id k p)) a
 ```
 
 Monoidal categories
