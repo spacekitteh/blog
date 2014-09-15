@@ -16,16 +16,8 @@ Bifunctors
 The first thing needed is bifunctors:
 
 ```haskell
-class (Category r, Category t) => PFunctor p r t | p r -> t, p t -> r where
-    first :: r a b -> t (p a c) (p b c)
-
-class (Category s, Category t) => QFunctor q s t | q s -> t, q t -> s where
-    second :: s a b -> t (q c a) (q c b)
-
 -- | Minimal definition: @bimap@ 
-
--- or both @first@ and @second@
-class (PFunctor p r t, QFunctor p s t) => Bifunctor p r s t | p r -> s t, p s -> r t, p t -> r s where
+class (Category r, Category s, Category t) => Bifunctor p r s t | p r -> s t, p s -> r t, p t -> r s where
     bimap :: r a b -> s c d -> t (p a c) (p b d)
 ```
 
