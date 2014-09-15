@@ -122,6 +122,7 @@ String diagrams can be thought of as an abstract form of network diagrams. Circu
 
 Template Haskell support for loading string diagrams
 ----------------------------------------------------
+This would be in another library but it would certainly be made so much easier with monoidal category support in base+ghc
 
 todo
 ====
