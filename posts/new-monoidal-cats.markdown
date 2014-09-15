@@ -76,10 +76,8 @@ Binoidal categories are used to model categories in which *evaluation order is s
 
 ```haskell
 class (Category k, Bifunctor p) => Binoidal k p
-  type Op k p :: * -> * -> *
-  
-  inFirst :: a -> Op k p a b
-  inSecond :: b -> Op k p a b
+  inFirst :: a -> p a b
+  inSecond :: b -> p a b
 ```
 
 TODO: Give example 
