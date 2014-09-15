@@ -38,8 +38,6 @@ instance Bifunctor Either (->) (->) (->) where
     bimap _ g (Right a) = Right (g a)
 ```
 
-Honestly, I don't think the PFunctor/QFunctor route is the best way to go - there is not much point having them just to define a bifunctor. I'll rewrite the bifunctor class to not use them.
-  
 Binoidal categories
 -------------------
 Binoidal categories are used to model categories in which *evaluation order is significant* - they are not commutative in time, i.e., impure functions. If a category is only a binoidal category, we cannot reorder computations at will. :(
