@@ -2,7 +2,7 @@
 title: Proposal for monoidal category classes in the base Haskell library
 date: 2014-09-15
 author: Sophie Taylor
-tags: haskell, category theory, maths
+tags: haskell, category theory, maths, ghc, wip
 ---
 
 Introduction and rationale
