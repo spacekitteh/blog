@@ -28,8 +28,23 @@ class (Category s, Category t) => QFunctor q s t | q s -> t, q t -> s where
 class (PFunctor p r t, QFunctor p s t) => Bifunctor p r s t | p r -> s t, p s -> r t, p t -> r s where
     bimap :: r a b -> s c d -> t (p a c) (p b d)
 ```
-  
+
   This is a straight copy/paste from Edward's categories package. Bifunctors are needed because the monoidal operation is a endobifunctor!
+  
+Examples:
+
+```haskell
+instance PFunctor (,) (->) (->) where first f = bimap f id
+instance QFunctor (,) (->) (->) where second = bimap id
+instance Bifunctor (,) (->) (->) (->) where
+    bimap f g (a,b)= (f a, g b)
+
+instance PFunctor Either (->) (->) where first f = bimap f id
+instance QFunctor Either (->) (->) where second = bimap id
+instance Bifunctor Either (->) (->) (->) where
+    bimap f _ (Left a) = Left (f a)
+    bimap _ g (Right a) = Right (g a)
+```
   
 Binoidal categories
 -------------------
@@ -37,11 +52,21 @@ Binoidal categories are used to model categories in which *evaluation order is s
 
 ```haskell
 class (Category k, Bifunctor p k k k) => Binoidal k p
-  inFirst :: k a (p a b)
-  inSecond :: k b (p a b)
+  inFirst :: k a (k b (p a b))
+  inSecond :: k b (k a (p a b))
 ```
 
-TODO: Give example 
+Examples:
+
+```haskell
+instance Binoidal (->) (,) where
+  inFirst a = \x -> (a,x)
+  inSecond b = \x -> (x,b)
+  
+instance Binoidal (->) Either where
+  inFirst a = \_ -> Left a
+  inSecond b = \_ -> Right b
+```
 
 Premonoidal categories
 ----------------------
