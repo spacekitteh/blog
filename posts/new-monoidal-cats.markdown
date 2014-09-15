@@ -126,6 +126,8 @@ String diagrams
 ---------------
 String diagrams can be thought of as an abstract form of network diagrams. Circuit diagrams, Simulink diagrams, signal flow diagrams, etc, are all string diagrams. By having one language to interpret them all (monoidal categories), the level of abstraction is raised tremendously!
 
+[Here is a list of various string diagrams for various classes.](http://ncatlab.org/nlab/show/string+diagram)
+
 Converting proc notation to give monoidal categories where possible
 -------------------------------------------------------------------
 In much the same manner that do notation should give Applicatives where possible, proc notation should give monoidal categories where possible. This is theoretically acceptable because all Arrows are monoidal categories with extra structure.
@@ -134,10 +136,9 @@ Template Haskell support for loading string diagrams
 ----------------------------------------------------
 This would be in another library but it would certainly be made so much easier with monoidal category support in base+ghc
 
-todo
-====
-braidings, terminal/initial objects, daggers, loops, init/causality
-
+Internal logic
+--------------
+The internal logic/type theory of symmetric monoidal categories is linear logic/type theory; for plain monodial categories, it is "non-commutative multiplicative intuitionistic linear logic/type theory". 
 
 Links/further reading
 =====================
@@ -147,3 +148,8 @@ Links/further reading
 * [Tangled Circuits](http://www.tac.mta.ca/tac/volumes/26/27/26-27.ps)
 * [Algebras of open dynamical systems on the operad of wiring diagrams](http://math.mit.edu/~dspivak/informatics/WD-ODE.pdf)
 * [Toward a categorical foundation of functional reactive programming](http://math.mit.edu/~dspivak/informatics/talks/CMU2014-01-23.pdf)
+
+todo
+====
+braidings, terminal/initial objects, daggers, loops, init/causality
+
