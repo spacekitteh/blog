@@ -44,20 +44,20 @@ Binoidal categories are used to model categories in which *evaluation order is s
 
 ```haskell
 class (Category k, Bifunctor p k k k) => Binoidal k p
-  inFirst :: k a (k b (p a b))
-  inSecond :: k b (k a (p a b))
+  inLeft :: k a (k b (p a b))
+  inRight :: k b (k a (p a b))
 ```
 
 Examples:
 
 ```haskell
 instance Binoidal (->) (,) where
-  inFirst a = \x -> (a,x)
-  inSecond b = \x -> (x,b)
+  inLeft a = \x -> (a,x)
+  inRight b = \x -> (x,b)
   
 instance Binoidal (->) Either where
-  inFirst a = \_ -> Left a
-  inSecond b = \_ -> Right b
+  inLeft a = \_ -> Left a
+  inRight b = \_ -> Right b
 ```
 
 This isn't really a necessary class either, and the infirst/insecond functions could (probably should) be pushed into PreMonoidal. The only thing which would be lost is non-associative binoidal categories, which aren't that interesting, as far as I can tell.
@@ -93,6 +93,8 @@ class (Binoidal k p, Associative k p) => PreMonoidal k p where
     type Id k p :: *
     cancelLeft :: k (p (Id k p) a) a
     cancelRight ::k (p a (Id k p)) a
+    unitLeft :: k a (p (Id k p) a)
+    unitRight :: k a (p a (Id k p))
 ```
 
 Monoidal categories
