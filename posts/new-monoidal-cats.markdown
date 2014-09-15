@@ -1,6 +1,6 @@
 ---
 title: Proposal for monoidal category classes in the base Haskell library
-date: 2014-09-14
+date: 2014-09-15
 author: Sophie Taylor
 tags: haskell, category theory, maths
 ---
@@ -105,6 +105,21 @@ A monoidal category is just a commutative premonoidal category - that is, a *pur
 ```haskell
 class PreMonoidal k p => Monoidal k p
 ```
+
+Braided monoidal categories
+---------------------------
+Braidings introduce a "swap" function.
+
+Symmetric monoidal categories
+-----------------------------
+When swap . swap = id
+
+String diagrams
+---------------
+String diagrams can be thought of as an abstract form of network diagrams. Circuit diagrams, Simulink diagrams, signal flow diagrams, etc, are all string diagrams. By having one language to interpret them all (monoidal categories), the level of abstraction is raised tremendously!
+
+Template Haskell support for loading string diagrams
+----------------------------------------------------
 
 todo
 ====
