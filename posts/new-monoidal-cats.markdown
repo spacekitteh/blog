@@ -76,6 +76,22 @@ class (Bifunctor p k k k, Category k) => Associative k p where
     associateRight :: k (p (p a b) c) (p a (p b c))
     associateLeft :: k (p a (p b c)) (p (p a b) c)
 ```
+
+Examples:
+```haskell
+instance Associative (->) (,) where
+        associateRight ((a,b),c) = (a,(b,c))
+        associateLeft (a,(b,c)) = ((a,b),c)
+
+instance Associative (->) Either where
+        associateRight (Left (Left a)) = Left a
+        associateRight (Left (Right b)) = Right (Left b)
+        associateRight (Right c) = Right (Right c)
+        associateLeft (Left a) = Left (Left a)
+        associateLeft (Right (Left b)) = Left (Right b)
+        associateLeft (Right (Right c)) = Right c
+```
+
 Now for premonoidal categories themselves:
 
 ```haskell
@@ -87,7 +103,7 @@ class (Binoidal k p, Associative k p) => PreMonoidal k p where
 
 Monoidal categories
 -------------------
-A monoidal category is just a commutative premonoidal category - that is, a *pure* premonoidal category; as such, no extra function definitions need to be made.
+A monoidal category is just a commutative (in time) premonoidal category - that is, a *pure* premonoidal category; as such, no extra function definitions need to be made.
 ```haskell
 class PreMonoidal k p => Monoidal k p
 ```
