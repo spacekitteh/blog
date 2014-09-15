@@ -45,6 +45,8 @@ instance Bifunctor Either (->) (->) (->) where
     bimap f _ (Left a) = Left (f a)
     bimap _ g (Right a) = Right (g a)
 ```
+
+Honestly, I don't think the PFunctor/QFunctor route is the best way to go - there is not much point having them just to define a bifunctor. I'll rewrite the bifunctor class to not use them.
   
 Binoidal categories
 -------------------
@@ -67,6 +69,8 @@ instance Binoidal (->) Either where
   inFirst a = \_ -> Left a
   inSecond b = \_ -> Right b
 ```
+
+This isn't really a necessary class either, and the infirst/insecond functions could (probably should) be pushed into PreMonoidal. The only thing which would be lost is non-associative binoidal categories, which aren't that interesting, as far as I can tell.
 
 Premonoidal categories
 ----------------------
