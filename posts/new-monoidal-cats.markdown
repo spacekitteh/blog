@@ -93,6 +93,18 @@ class (Binoidal k p, Associative k p) => PreMonoidal k p where
     unitRight :: k a (p a (Id k p))
 ```
 
+Another possible naming could be:
+
+```haskell
+class (Binoidal k p, Associative k p) => PreMonoidal k p where
+    type Id k p :: *
+    eliminateLeft :: k (p (Id k p) a) a
+    eliminiateRight ::k (p a (Id k p)) a
+    introduceLeft :: k a (p (Id k p) a)
+    introduceRight :: k a (p a (Id k p))
+```
+
+
 Monoidal categories
 -------------------
 A monoidal category is just a commutative (in time) premonoidal category - that is, a *pure* premonoidal category; as such, no extra function definitions need to be made.
