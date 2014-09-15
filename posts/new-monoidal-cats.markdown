@@ -135,9 +135,9 @@ braidings, terminal/initial objects, daggers, loops, init/causality
 
 Links
 =====
-http://www.thev.net/PaulLiu/download/thesis-liu.pdf Theory and Practice of Causal Commutative Arrows
-http://arxiv.org/abs/1405.6881 Categories in Control
-https://www.eecs.berkeley.edu/Pubs/TechRpts/2014/EECS-2014-130.html Generalized Arrows
-www.tac.mta.ca/tac/volumes/26/27/26-27.ps Tangled Circuits
-http://math.mit.edu/~dspivak/informatics/WD-ODE.pdf Algebras of open dynamical systems on the operad of wiring diagrams
-http://math.mit.edu/~dspivak/informatics/talks/CMU2014-01-23.pdf Toward a categorical foundation of functional reactive programming
+* http://www.thev.net/PaulLiu/download/thesis-liu.pdf Theory and Practice of Causal Commutative Arrows
+* http://arxiv.org/abs/1405.6881 Categories in Control
+* https://www.eecs.berkeley.edu/Pubs/TechRpts/2014/EECS-2014-130.html Generalized Arrows
+* http://www.tac.mta.ca/tac/volumes/26/27/26-27.ps Tangled Circuits
+* http://math.mit.edu/~dspivak/informatics/WD-ODE.pdf Algebras of open dynamical systems on the operad of wiring diagrams
+* http://math.mit.edu/~dspivak/informatics/talks/CMU2014-01-23.pdf Toward a categorical foundation of functional reactive programming
