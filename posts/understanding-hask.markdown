@@ -2,7 +2,7 @@
 title: Understanding Hask
 date: 2014-09-14
 author: Sophie Taylor
-tags: haskell, maths, category theory
+tags: haskell, maths, category theory, wip
 ---
 
 If you're not well versed in category theory, then understanding many of Edward Kmett's libraries can be a tad difficult. Here, I shall try and guide us through his library Hask, which is a category theory library with a distinctive lens flavour. I won't be going into the details of all the classes, just the basics (i.e., what I can figure out without making my headache worse)
