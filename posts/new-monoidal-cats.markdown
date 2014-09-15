@@ -82,6 +82,8 @@ class (Category k, Bifunctor p) => Binoidal k p
   inSecond :: b -> Op k p a b
 ```
 
+TODO: Give example 
+
 Premonoidal categories
 ----------------------
 First we need an associative operation:
