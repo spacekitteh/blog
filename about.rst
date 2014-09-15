@@ -1,17 +1,12 @@
 ---
 title: About
 ---
-Nullam imperdiet sodales orci vitae molestie. Nunc quam orci, pharetra a
-rhoncus vitae, eleifend id felis. Suspendisse potenti. Etiam vitae urna orci.
-Quisque pellentesque dignissim felis, egestas tempus urna luctus vitae. In hac
-habitasse platea dictumst. Morbi fringilla mattis odio, et mattis tellus
-accumsan vitae.
+This is where I post about random shit which may or may not be on my mind.
 
-1. Amamus Unicode 碁
-2. Interdum nex magna.
+Here are some pictures I like.
 
-Vivamus eget mauris sit amet nulla laoreet lobortis. Nulla in diam elementum
-risus convallis commodo. Cras vehicula varius dui vitae facilisis. Proin
-elementum libero eget leo aliquet quis euismod orci vestibulum. Duis rhoncus
-lorem consequat tellus vestibulum aliquam. Quisque orci orci, malesuada porta
-blandit et, interdum nec magna.
+image:: https://i.imgur.com/El5uUOX.jpg
+
+image:: https://i.imgur.com/R7436BN.jpg
+
+image:: https://i.imgur.com/NrQaQLH.jpg
