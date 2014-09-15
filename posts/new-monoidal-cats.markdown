@@ -26,13 +26,9 @@ class (Category r, Category s, Category t) => Bifunctor p r s t | p r -> s t, p 
 Examples:
 
 ```haskell
-instance PFunctor (,) (->) (->) where first f = bimap f id
-instance QFunctor (,) (->) (->) where second = bimap id
 instance Bifunctor (,) (->) (->) (->) where
     bimap f g (a,b)= (f a, g b)
 
-instance PFunctor Either (->) (->) where first f = bimap f id
-instance QFunctor Either (->) (->) where second = bimap id
 instance Bifunctor Either (->) (->) (->) where
     bimap f _ (Left a) = Left (f a)
     bimap _ g (Right a) = Right (g a)
