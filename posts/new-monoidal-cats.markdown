@@ -108,6 +108,8 @@ A monoidal category is just a commutative (in time) premonoidal category - that 
 class PreMonoidal k p => Monoidal k p
 ```
 
+Note: REEEEEAAAALLLY need to give names to the isomorphisms (the associator and the left/right unit isos)
+
 Braided monoidal categories
 ---------------------------
 Braidings introduce a "swap" function.
