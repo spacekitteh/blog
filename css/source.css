@@ -1,0 +1,75 @@
+pre.sourceCode
+{
+  padding          : 20px 20px 20px 20px;
+  border-radius    : 2px 2px 2px 2px;
+  background-color : rgb(39,40,34);
+  color            : rgb(255,255,255);
+  overflow-y       : scroll;
+}
+
+pre.sourceCode .kw
+{
+  color       : rgb(249,38,114);
+  font-weight : bold;
+}
+
+pre.sourceCode .dt
+{
+  color : rgb(102,217,239);
+}
+
+pre.sourceCode .dv
+{
+  color : rgb(174,129,255);
+}
+
+pre.sourceCode .bn
+{
+  color : rgb(64,160,112);
+}
+
+pre.sourceCode .fl
+{
+  color : rgb(64,160,112);
+}
+
+pre.sourceCode .ch
+{
+  color : rgb(64,160,112);
+}
+
+pre.sourceCode .st
+{
+  color : rgb(230,219,116);
+}
+
+pre.sourceCode .co
+{
+  color      : rgb(117,113,94);
+  font-style : italic;
+}
+
+pre.sourceCode .ot
+{
+  color : rgb(166,226,46);
+}
+
+pre.sourceCode .fu
+{
+  color : rgb(249,38,114);
+}
+
+pre.sourceCode .err
+{
+  color       : rgb(255,0,0);
+  font-weight : bold;
+}
+
+pre.sourceCode .al
+{
+  color       : rgb(255,0,0);
+  font-weight : bold;
+}
+
+
+/* Generated with Clay, http://fvisser.nl/clay */
